@@ -12,6 +12,6 @@ Replace the placeholder links and contact details in `src/data/portfolio.ts` wit
 2. Start development server: `npm run dev`
 3. Open `http://localhost:3000`
 
-## Backend
+## Contact / Links
 
-The contact form posts to `/api/contact`. You can later connect that route to email, a database, or a form service.
+Edit the placeholder links and contact details in `src/data/portfolio.ts` to surface your GitHub, LinkedIn, email, LeetCode, and project URLs. Add any contact endpoint or form integration you prefer — this scaffold no longer includes a built-in contact route.

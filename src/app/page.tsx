@@ -1,4 +1,3 @@
-import { ContactForm } from '@/components/contact-form';
 import { SectionHeading } from '@/components/section-heading';
 import { profile } from '@/data/portfolio';
 
@@ -253,26 +252,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
+      <section className="mt-20">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
           <SectionHeading
-            eyebrow="Contact"
-            title="A ready-made backend endpoint for your portfolio form."
-            description="The form posts to the backend route in this app. Later, you can connect it to email, a database, or your preferred hosting integration without changing the UI."
+            eyebrow="Get in touch"
+            title="Links and contact"
+            description="I removed the built-in contact form — add your preferred contact method or form integration by editing `src/data/portfolio.ts` or adding your own route."
           />
-          <div className="mt-8 rounded-3xl border border-white/10 bg-slate-950/70 p-5 text-sm leading-7 text-slate-300">
-            <p className="text-white">Editable placeholders included:</p>
-            <ul className="mt-3 space-y-2">
-              <li>GitHub profile URL</li>
-              <li>LinkedIn profile URL</li>
-              <li>Email address</li>
-              <li>LeetCode handle</li>
-              <li>Project repository and live demo links</li>
-            </ul>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {profile.socials.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100 transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
+              >
+                <span>{link.label}</span>
+                <span className="text-xs text-slate-400">{link.display}</span>
+              </a>
+            ))}
           </div>
         </div>
-        <ContactForm />
       </section>
+
+      <footer className="mt-12 py-8 text-center text-sm text-slate-400">
+        © {new Date().getFullYear()} {profile.name} — Links and contact handled directly in the data file.
+      </footer>
     </main>
   );
 }
