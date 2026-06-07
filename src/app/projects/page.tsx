@@ -52,9 +52,6 @@ export default function ProjectsPage() {
 
       {/* Page heading */}
       <section className="py-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.45em] text-[var(--accent)]/70">
-          All Projects
-        </p>
         <h1 className="mt-3 font-[family-name:var(--font-heading)] text-4xl font-semibold tracking-tight text-[var(--text)] sm:text-5xl lg:text-6xl">
           Builds &amp; experiments.
         </h1>
@@ -68,13 +65,12 @@ export default function ProjectsPage() {
         {profile.projects.map((project, index) => (
           <CometBorder key={project.name} delay={index * -1}>
             <article className="group text-left transition duration-300 hover:-translate-y-1">
-              <p className="text-sm uppercase tracking-[0.3em] text-[var(--accent)]/75">{project.summary}</p>
-              <h2 className="mt-3 font-[family-name:var(--font-heading)] text-2xl font-semibold text-[var(--text)] transition duration-300 group-hover:tracking-tight">
+              <h2 className="mt-1 font-[family-name:var(--font-heading)] text-2xl font-semibold text-[var(--text)] transition duration-300 group-hover:tracking-tight">
                 {project.name}
               </h2>
               <p className="mt-4 text-base leading-7 text-[var(--muted)]">{project.description}</p>
 
-              <ul className="mt-6 space-y-3 text-sm text-[var(--muted)] sm:text-base">
+              <ul className="mt-4 space-y-3 text-sm text-[var(--muted)] sm:text-base">
                 {project.highlights.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--accent)]" />

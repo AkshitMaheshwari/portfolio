@@ -145,17 +145,18 @@ export default function HomePage() {
         <SectionHeading
           eyebrow=""
           title="Academic foundation."
-          description="A strong education base that supports the technical work and projects below."
+          description=""
         />
         <div className="space-y-4">
           {profile.education.map((item, index) =>
             sectionCard(
-              <div className="grid gap-4 text-left lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-                <p className="text-xs uppercase tracking-[0.35em] text-[var(--accent)]/75">{item.period}</p>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between text-left gap-2">
                 <div>
                   <h3 className="text-xl font-semibold text-[var(--text)]">{item.school}</h3>
-                  <p className="mt-2 text-sm text-[var(--muted)]">{item.place}</p>
-                  <p className="mt-4 text-base leading-7 text-[var(--muted)]">{item.degree}</p>
+                  <p className="mt-2 text-sm text-[var(--muted)]">{item.place} • <span className="italic">{item.degree}</span></p>
+                </div>
+                <div className="text-sm text-[var(--muted)] font-medium shrink-0 sm:text-right">
+                  {item.period}
                 </div>
               </div>,
               '',
@@ -226,20 +227,24 @@ export default function HomePage() {
 
       <section className="space-y-6 py-8">
         <SectionHeading
-          eyebrow="Work Experience"
+          eyebrow=""
           title="Practical work and leadership."
-          description="Short, focused cards that keep the structure calm and readable."
+          // description=""
         />
         <div className="space-y-4">
           {profile.experience.map((item, index) =>
             sectionCard(
-              <div className="grid gap-4 text-left lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-                <p className="text-xs uppercase tracking-[0.35em] text-[var(--accent)]/75">{item.period}</p>
-                <div>
-                  <h3 className="text-xl font-semibold text-[var(--text)]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[var(--muted)]">{item.organization}</p>
-                  <p className="mt-4 text-base leading-7 text-[var(--muted)]">{item.description}</p>
+              <div className="flex flex-col text-left gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                  <div>
+                    <h3 className="text-xl font-semibold text-[var(--text)]">{item.title}</h3>
+                    <p className="mt-1 text-sm text-[var(--muted)]">{item.organization}</p>
+                  </div>
+                  <div className="text-sm text-[var(--muted)] font-medium shrink-0 sm:text-right">
+                    {item.period}
+                  </div>
                 </div>
+                <p className="text-base leading-7 text-[var(--muted)]">{item.description}</p>
               </div>,
               '',
               index * -0.5,
@@ -251,21 +256,20 @@ export default function HomePage() {
 
       <section id="projects" className="space-y-6 py-8">
         <SectionHeading
-          eyebrow="Projects"
-          title="Selected builds and experiments."
-          description="The project section stays in the same visual rhythm so it doesn't compete with the rest of the page."
+          eyebrow=""
+          title="Build Projects and Demos"
+          // description="The project section stays in the same visual rhythm so it doesn't compete with the rest of the page."
         />
         <div className="grid gap-4 lg:grid-cols-2">
           {profile.projects.slice(0, 2).map((project, index) => (
             <CometBorder key={project.name} delay={index * -1}>
               <article className="group text-left transition duration-300 hover:-translate-y-1">
-                  <p className="text-sm uppercase tracking-[0.3em] text-[var(--accent)]/75">{project.summary}</p>
-                  <h3 className="mt-3 font-[family-name:var(--font-heading)] text-2xl font-semibold text-[var(--text)] transition duration-300 group-hover:tracking-tight">
+                  <h3 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[var(--text)] transition duration-300 group-hover:tracking-tight">
                     {project.name}
                   </h3>
                   <p className="mt-4 text-base leading-7 text-[var(--muted)]">{project.description}</p>
 
-                  <ul className="mt-6 space-y-3 text-sm text-[var(--muted)] sm:text-base">
+                  <ul className="mt-4 space-y-3 text-sm text-[var(--muted)] sm:text-base">
                     {project.highlights.map((item) => (
                       <li key={item} className="flex gap-3">
                         <span className="mt-2 h-2 w-2 rounded-full bg-[var(--accent)]" />
@@ -323,9 +327,8 @@ export default function HomePage() {
 
       <section className="space-y-6 py-8">
         {sectionCard(
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.48em] text-[var(--accent)]/72">Contact</p>
-            <h2 className="mt-4 font-[family-name:var(--font-heading)] text-[2.5rem] font-semibold tracking-tight text-[var(--text)] sm:text-[3.6rem]">
+          <div className="mx-auto max-w-4xl text-center py-4">
+            <h2 className="font-[family-name:var(--font-heading)] text-[2.5rem] font-semibold tracking-tight text-[var(--text)] sm:text-[3.6rem]">
               Get in Touch
             </h2>
             <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-[var(--muted)] sm:text-xl">

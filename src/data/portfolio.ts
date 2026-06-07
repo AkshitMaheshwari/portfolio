@@ -62,13 +62,13 @@ export const profile = {
       place: 'Remote',
       degree: 'B.Sc. - Data Science and its Applications',
       period: 'September 2023 - July 2027'
-    },
-    {
-      school: 'Sant Gyaneshwar Model School',
-      place: 'Delhi, India',
-      degree: '12th Standard (CBSE) - 81.6%',
-      period: 'May 2021 - April 2023'
     }
+    // {
+    //   school: 'Sant Gyaneshwar Model School',
+    //   place: 'Delhi, India',
+    //   degree: '12th Standard (CBSE) - 81.6%',
+    //   period: 'May 2021 - April 2023'
+    // }
   ],
   skills: [
     {
