@@ -94,68 +94,128 @@ body::after {
     text-wrap: balance;
   }
 
-  .project-border-line {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0.85;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.22));
-  }
 
-  .project-border-top,
-  .project-border-bottom {
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 18%, rgba(255, 255, 255, 0.92) 50%, rgba(255, 255, 255, 0.42) 82%, transparent 100%);
-    background-size: 200% 100%;
-    animation: border-flow-x 5.5s linear infinite;
-  }
-
-  .project-border-top {
-    top: 0;
-  }
-
-  .project-border-bottom {
-    bottom: 0;
-    animation-direction: reverse;
-  }
-
-  .project-border-left,
-  .project-border-right {
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.42) 18%, rgba(255, 255, 255, 0.92) 50%, rgba(255, 255, 255, 0.42) 82%, transparent 100%);
-    background-size: 100% 200%;
-    animation: border-flow-y 5.5s linear infinite;
-  }
-
-  .project-border-left {
-    left: 0;
-  }
-
-  .project-border-right {
-    right: 0;
-    animation-direction: reverse;
-  }
 }
 
-@keyframes border-flow-x {
-  from {
-    background-position: 0% 0%;
-  }
+/* ── Comet border ──────────────────────────────────────────── */
 
-  to {
-    background-position: 200% 0%;
-  }
+@property --comet-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
-@keyframes border-flow-y {
-  from {
-    background-position: 0% 0%;
-  }
+.comet-border {
+  --_radius: 2rem;
+  --_bw: 1.5px;
+  --_comet-peak: #ffffff;
+  --_comet-hi: rgba(255, 255, 255, 0.6);
+  --_comet-mid: rgba(255, 255, 255, 0.28);
+  --_comet-lo: rgba(255, 255, 255, 0.08);
+  --_comet-base: rgba(255, 255, 255, 0.06);
+  --_glow-peak: rgba(255, 255, 255, 0.4);
+  --_glow-hi: rgba(255, 255, 255, 0.18);
+  --_inner-ring: rgba(255, 255, 255, 0.06);
 
+  position: relative;
+  border-radius: var(--_radius);
+  padding: var(--_bw);
+  isolation: isolate;
+}
+
+:root[data-theme='light'] .comet-border {
+  --_comet-peak: rgba(15, 15, 15, 0.65);
+  --_comet-hi: rgba(15, 15, 15, 0.35);
+  --_comet-mid: rgba(15, 15, 15, 0.15);
+  --_comet-lo: rgba(15, 15, 15, 0.05);
+  --_comet-base: rgba(15, 15, 15, 0.04);
+  --_glow-peak: rgba(15, 15, 15, 0.18);
+  --_glow-hi: rgba(15, 15, 15, 0.08);
+  --_inner-ring: rgba(15, 15, 15, 0.05);
+}
+
+/* Animated comet border ring */
+.comet-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--_bw);
+  background: conic-gradient(
+    from var(--comet-angle) at 50% 50%,
+    var(--_comet-base) 0%,
+    var(--_comet-base) 55%,
+    var(--_comet-lo) 64%,
+    var(--_comet-mid) 72%,
+    var(--_comet-hi) 77%,
+    var(--_comet-peak) 80%,
+    var(--_comet-hi) 83%,
+    var(--_comet-mid) 87%,
+    var(--_comet-lo) 92%,
+    var(--_comet-base) 100%
+  );
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  animation: comet-spin 4s linear infinite;
+  animation-delay: var(--comet-delay, 0s);
+  pointer-events: none;
+}
+
+/* Glow halo around the comet */
+.comet-border::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--_radius) + 8px);
+  background: conic-gradient(
+    from var(--comet-angle) at 50% 50%,
+    transparent 0%,
+    transparent 60%,
+    var(--_glow-hi) 74%,
+    var(--_glow-peak) 80%,
+    var(--_glow-hi) 86%,
+    transparent 100%
+  );
+  filter: blur(16px);
+  opacity: 0.55;
+  z-index: -1;
+  animation: comet-spin 4s linear infinite;
+  animation-delay: var(--comet-delay, 0s);
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    filter 0.4s ease;
+}
+
+.comet-border:hover::after {
+  opacity: 1;
+  filter: blur(22px);
+}
+
+/* Card interior */
+.comet-border-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(var(--_radius) - var(--_bw));
+  background: var(--panel);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    var(--shadow),
+    inset 0 0 0 0.5px var(--_inner-ring);
+}
+
+@keyframes comet-spin {
+  from {
+    --comet-angle: 0deg;
+  }
   to {
-    background-position: 0% 200%;
+    --comet-angle: 360deg;
   }
 }

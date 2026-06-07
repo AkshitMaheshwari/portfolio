@@ -1,6 +1,7 @@
 import { SectionHeading } from '@/components/section-heading';
 import { CursorGlow } from '@/components/cursor-glow';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { CometBorder } from '@/components/comet-border';
 import { profile } from '@/data/portfolio';
 
 function sectionCard(content: React.ReactNode, className = '') {
@@ -214,15 +215,9 @@ export default function HomePage() {
           description="The project section stays in the same visual rhythm so it doesn't compete with the rest of the page."
         />
         <div className="grid gap-4 lg:grid-cols-2">
-          {profile.projects.map((project) =>
-            sectionCard(
-              <div className="relative overflow-hidden">
-                <span className="project-border-line project-border-top" aria-hidden="true" />
-                <span className="project-border-line project-border-right" aria-hidden="true" />
-                <span className="project-border-line project-border-bottom" aria-hidden="true" />
-                <span className="project-border-line project-border-left" aria-hidden="true" />
-
-                <article className="group relative z-10 text-left transition duration-300 hover:-translate-y-1">
+          {profile.projects.map((project, index) => (
+            <CometBorder key={project.name} delay={index * -1}>
+              <article className="group text-left transition duration-300 hover:-translate-y-1">
                   <p className="text-sm uppercase tracking-[0.3em] text-[var(--accent)]/75">{project.summary}</p>
                   <h3 className="mt-3 font-[family-name:var(--font-heading)] text-2xl font-semibold text-[var(--text)] transition duration-300 group-hover:tracking-tight">
                     {project.name}
@@ -270,9 +265,8 @@ export default function HomePage() {
                     </a>
                   </div>
                 </article>
-              </div>
-            )
-          )}
+            </CometBorder>
+          ))}
         </div>
       </section>
 
