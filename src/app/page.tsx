@@ -2,15 +2,14 @@ import { SectionHeading } from '@/components/section-heading';
 import { CursorGlow } from '@/components/cursor-glow';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { CometBorder } from '@/components/comet-border';
+import { TypingHeading } from '@/components/typing-heading';
 import { profile } from '@/data/portfolio';
 
-function sectionCard(content: React.ReactNode, className = '') {
+function sectionCard(content: React.ReactNode, className = '', delay = 0, key?: React.Key) {
   return (
-    <div
-      className={`rounded-[2rem] border border-[var(--border)] bg-[var(--panel)] p-6 shadow-[var(--shadow)] backdrop-blur-xl sm:p-8 ${className}`}
-    >
+    <CometBorder key={key} className={className} delay={delay}>
       {content}
-    </div>
+    </CometBorder>
   );
 }
 
@@ -30,9 +29,7 @@ export default function HomePage() {
       <section className="relative z-10 grid gap-10 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-14">
         <div className="space-y-6 text-left">
           {/* <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[var(--accent)]/72">Hi</p> */}
-          <h1 className="max-w-3xl font-[family-name:var(--font-heading)] text-5xl font-semibold tracking-tight text-[var(--text)] sm:text-6xl lg:text-7xl">
-            Hi, I&apos;m Akshit
-          </h1>
+          <TypingHeading />
           <p className="max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
             <span className="font-semibold text-[var(--text)]">AI/ML developer</span> who likes practical systems, polished interfaces,
             and work that feels clean, useful, and intentional.
@@ -105,7 +102,9 @@ export default function HomePage() {
             <p className="text-base leading-8 sm:text-lg">
               A motivated undergraduate in IT and Data Science with hands-on experience in AI/ML projects. I focus on making systems measurable and solvable, not just functional - from data preparation and embedding pipelines to ranking logic and retrieval evaluation.
             </p>
-          </div>
+          </div>,
+          '',
+          0
         )}
       </section>
 
@@ -116,7 +115,7 @@ export default function HomePage() {
           description="A strong education base that supports the technical work and projects below."
         />
         <div className="space-y-4">
-          {profile.education.map((item) =>
+          {profile.education.map((item, index) =>
             sectionCard(
               <div className="grid gap-4 text-left lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
                 <p className="text-xs uppercase tracking-[0.35em] text-[var(--accent)]/75">{item.period}</p>
@@ -125,7 +124,10 @@ export default function HomePage() {
                   <p className="mt-2 text-sm text-[var(--muted)]">{item.place}</p>
                   <p className="mt-4 text-base leading-7 text-[var(--muted)]">{item.degree}</p>
                 </div>
-              </div>
+              </div>,
+              '',
+              index * -0.5,
+              item.school
             )
           )}
         </div>
@@ -161,7 +163,7 @@ export default function HomePage() {
           </div>
         </div> */}
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {profile.skills.map((group) =>
+          {profile.skills.map((group, index) =>
             sectionCard(
               <div className="space-y-4 text-left transition duration-300 group-hover:translate-y-[-2px]">
                 <div className="flex items-center gap-3">
@@ -180,7 +182,10 @@ export default function HomePage() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </div>,
+              '',
+              index * -0.3,
+              group.category
             )
           )}
         </div>
@@ -193,7 +198,7 @@ export default function HomePage() {
           description="Short, focused cards that keep the structure calm and readable."
         />
         <div className="space-y-4">
-          {profile.experience.map((item) =>
+          {profile.experience.map((item, index) =>
             sectionCard(
               <div className="grid gap-4 text-left lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
                 <p className="text-xs uppercase tracking-[0.35em] text-[var(--accent)]/75">{item.period}</p>
@@ -202,7 +207,10 @@ export default function HomePage() {
                   <p className="mt-2 text-sm text-[var(--muted)]">{item.organization}</p>
                   <p className="mt-4 text-base leading-7 text-[var(--muted)]">{item.description}</p>
                 </div>
-              </div>
+              </div>,
+              '',
+              index * -0.5,
+              item.title
             )
           )}
         </div>
