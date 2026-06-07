@@ -4,12 +4,35 @@
 
 :root {
   color-scheme: dark;
-  --background: #060816;
-  --foreground: #edf7ff;
+  --page: #0a0a0a;
+  --surface: rgba(255, 255, 255, 0.04);
+  --panel: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: #f5f5f5;
+  --muted: #b8b8b8;
+  --accent: #ffffff;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --page: #f6f4ef;
+  --surface: rgba(255, 255, 255, 0.82);
+  --panel: rgba(255, 255, 255, 0.92);
+  --border: rgba(20, 20, 20, 0.1);
+  --text: #0e0e10;
+  --muted: #55585f;
+  --accent: #0e0e10;
+  --shadow: 0 24px 80px rgba(15, 15, 15, 0.12);
 }
 
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 html {
@@ -19,13 +42,20 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  color: var(--foreground);
+  color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
-    radial-gradient(circle at right 20%, rgba(45, 212, 191, 0.12), transparent 22%),
-    radial-gradient(circle at bottom, rgba(251, 191, 36, 0.08), transparent 30%),
-    linear-gradient(180deg, #050816 0%, #081226 48%, #04050b 100%);
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.14), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.08), transparent 26%),
+    var(--page);
   font-family: var(--font-body), system-ui, sans-serif;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 body::before {
@@ -33,20 +63,99 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 70px 70px;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 84px 84px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent 90%);
-  opacity: 0.3;
+  opacity: 0.18;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: auto 8% 12% auto;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 68%);
+  filter: blur(30px);
+  pointer-events: none;
+  opacity: 0.55;
 }
 
 ::selection {
-  background: rgba(103, 232, 249, 0.35);
-  color: #f8fafc;
+  background: var(--accent);
+  color: var(--page);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .project-border-line {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.22));
+  }
+
+  .project-border-top,
+  .project-border-bottom {
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 18%, rgba(255, 255, 255, 0.92) 50%, rgba(255, 255, 255, 0.42) 82%, transparent 100%);
+    background-size: 200% 100%;
+    animation: border-flow-x 5.5s linear infinite;
+  }
+
+  .project-border-top {
+    top: 0;
+  }
+
+  .project-border-bottom {
+    bottom: 0;
+    animation-direction: reverse;
+  }
+
+  .project-border-left,
+  .project-border-right {
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.42) 18%, rgba(255, 255, 255, 0.92) 50%, rgba(255, 255, 255, 0.42) 82%, transparent 100%);
+    background-size: 100% 200%;
+    animation: border-flow-y 5.5s linear infinite;
+  }
+
+  .project-border-left {
+    left: 0;
+  }
+
+  .project-border-right {
+    right: 0;
+    animation-direction: reverse;
+  }
+}
+
+@keyframes border-flow-x {
+  from {
+    background-position: 0% 0%;
+  }
+
+  to {
+    background-position: 200% 0%;
+  }
+}
+
+@keyframes border-flow-y {
+  from {
+    background-position: 0% 0%;
+  }
+
+  to {
+    background-position: 0% 200%;
   }
 }
