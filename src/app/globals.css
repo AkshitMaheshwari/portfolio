@@ -102,24 +102,43 @@ body::after {
 @property --comet-angle {
   syntax: '<angle>';
   initial-value: 0deg;
-  inherits: false;
+  inherits: true;
 }
 
 .comet-border {
   --_radius: 2rem;
   --_bw: 1.5px;
-  --_comet-peak: #ffffff;
-  --_comet-hi: rgba(255, 255, 255, 0.6);
-  --_comet-mid: rgba(255, 255, 255, 0.28);
-  --_comet-lo: rgba(255, 255, 255, 0.08);
-  --_comet-base: rgba(255, 255, 255, 0.06);
-  --_glow-peak: rgba(255, 255, 255, 0.4);
-  --_glow-hi: rgba(255, 255, 255, 0.18);
+  --_comet-peak: rgba(255, 255, 255, 0.8);
+  --_comet-hi: rgba(255, 255, 255, 0.35);
+  --_comet-mid: rgba(255, 255, 255, 0.15);
+  --_comet-lo: rgba(255, 255, 255, 0.06);
+  --_comet-base: rgba(255, 255, 255, 0.04);
+  --_glow-peak: rgba(255, 255, 255, 0.25);
+  --_glow-hi: rgba(255, 255, 255, 0.1);
   --_inner-ring: rgba(255, 255, 255, 0.06);
 
   position: relative;
+  display: flex;
+  flex-direction: column;
   border-radius: var(--_radius);
-  padding: var(--_bw);
+  border: var(--_bw) solid transparent;
+  background:
+    linear-gradient(var(--page), var(--page)) padding-box,
+    conic-gradient(
+      from var(--comet-angle) at 50% 50%,
+      var(--_comet-base) 0%,
+      var(--_comet-base) 55%,
+      var(--_comet-lo) 64%,
+      var(--_comet-mid) 72%,
+      var(--_comet-hi) 77%,
+      var(--_comet-peak) 80%,
+      var(--_comet-hi) 83%,
+      var(--_comet-mid) 87%,
+      var(--_comet-lo) 92%,
+      var(--_comet-base) 100%
+    ) border-box;
+  animation: comet-spin 4s linear infinite;
+  animation-delay: var(--comet-delay, 0s);
   isolation: isolate;
 }
 
@@ -132,39 +151,6 @@ body::after {
   --_glow-peak: rgba(15, 15, 15, 0.18);
   --_glow-hi: rgba(15, 15, 15, 0.08);
   --_inner-ring: rgba(15, 15, 15, 0.05);
-}
-
-/* Animated comet border ring */
-.comet-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: var(--_bw);
-  background: conic-gradient(
-    from var(--comet-angle) at 50% 50%,
-    var(--_comet-base) 0%,
-    var(--_comet-base) 55%,
-    var(--_comet-lo) 64%,
-    var(--_comet-mid) 72%,
-    var(--_comet-hi) 77%,
-    var(--_comet-peak) 80%,
-    var(--_comet-hi) 83%,
-    var(--_comet-mid) 87%,
-    var(--_comet-lo) 92%,
-    var(--_comet-base) 100%
-  );
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  animation: comet-spin 4s linear infinite;
-  animation-delay: var(--comet-delay, 0s);
-  pointer-events: none;
 }
 
 /* Glow halo around the comet */
@@ -185,8 +171,6 @@ body::after {
   filter: blur(16px);
   opacity: 0.55;
   z-index: -1;
-  animation: comet-spin 4s linear infinite;
-  animation-delay: var(--comet-delay, 0s);
   pointer-events: none;
   transition:
     opacity 0.4s ease,
@@ -202,6 +186,9 @@ body::after {
 .comet-border-inner {
   position: relative;
   z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   border-radius: calc(var(--_radius) - var(--_bw));
   background: var(--panel);
   backdrop-filter: blur(24px);
