@@ -41,7 +41,7 @@ export const profile = {
     },
     {
       label: 'Email',
-      href: 'mailto:akshitmaheshwari06@gmail.com',
+      href: 'akshitmaheshwari06@gmail.com',
       display: 'akshitmaheshwari06@gmail.com'
     },
     {

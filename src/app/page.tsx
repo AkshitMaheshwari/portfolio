@@ -42,6 +42,12 @@ export default function HomePage() {
           >
             Blogs
           </a>
+          <Link
+            href="#contact"
+            className="rounded-full px-4 py-1.5 text-sm font-medium text-[var(--muted)] transition duration-200 hover:bg-[var(--surface)] hover:text-[var(--text)]"
+          >
+            Contact
+          </Link>
           <a
             href="https://drive.google.com/file/d/1AtoKLP_-DwR1ngpiLQTj7UsbMPhD2WDT/view?usp=sharing"
             target="_blank"
@@ -325,7 +331,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="space-y-6 py-8">
+      <section id="contact" className="space-y-6 py-8">
         {sectionCard(
           <div className="mx-auto max-w-4xl text-center py-4">
             <h2 className="font-[family-name:var(--font-heading)] text-[2.5rem] font-semibold tracking-tight text-[var(--text)] sm:text-[3.6rem]">
