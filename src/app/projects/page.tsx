@@ -37,6 +37,12 @@ export default function ProjectsPage() {
           >
             Blogs
           </a>
+          <Link
+            href="/#contact"
+            className="rounded-full px-4 py-1.5 text-sm font-medium text-[var(--muted)] transition duration-200 hover:bg-[var(--surface)] hover:text-[var(--text)]"
+          >
+            Contact
+          </Link>
           <a
             href="https://drive.google.com/file/d/1AtoKLP_-DwR1ngpiLQTj7UsbMPhD2WDT/view?usp=sharing"
             target="_blank"
