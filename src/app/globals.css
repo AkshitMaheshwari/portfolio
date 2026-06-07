@@ -3,18 +3,6 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  --page: #0a0a0a;
-  --surface: rgba(255, 255, 255, 0.04);
-  --panel: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.12);
-  --text: #f5f5f5;
-  --muted: #b8b8b8;
-  --accent: #ffffff;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
-}
-
-:root[data-theme='light'] {
   color-scheme: light;
   --page: #f6f4ef;
   --surface: rgba(255, 255, 255, 0.82);
@@ -24,6 +12,18 @@
   --muted: #55585f;
   --accent: #0e0e10;
   --shadow: 0 24px 80px rgba(15, 15, 15, 0.12);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #0a0a0a;
+  --surface: rgba(255, 255, 255, 0.04);
+  --panel: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: #f5f5f5;
+  --muted: #b8b8b8;
+  --accent: #ffffff;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
 }
 
 * {
@@ -108,14 +108,14 @@ body::after {
 .comet-border {
   --_radius: 2rem;
   --_bw: 1.5px;
-  --_comet-peak: rgba(255, 255, 255, 0.8);
-  --_comet-hi: rgba(255, 255, 255, 0.35);
-  --_comet-mid: rgba(255, 255, 255, 0.15);
-  --_comet-lo: rgba(255, 255, 255, 0.06);
-  --_comet-base: rgba(255, 255, 255, 0.04);
-  --_glow-peak: rgba(255, 255, 255, 0.25);
-  --_glow-hi: rgba(255, 255, 255, 0.1);
-  --_inner-ring: rgba(255, 255, 255, 0.06);
+  --_comet-peak: rgba(15, 15, 15, 0.65);
+  --_comet-hi: rgba(15, 15, 15, 0.35);
+  --_comet-mid: rgba(15, 15, 15, 0.15);
+  --_comet-lo: rgba(15, 15, 15, 0.05);
+  --_comet-base: rgba(15, 15, 15, 0.04);
+  --_glow-peak: rgba(15, 15, 15, 0.18);
+  --_glow-hi: rgba(15, 15, 15, 0.08);
+  --_inner-ring: rgba(15, 15, 15, 0.05);
 
   position: relative;
   display: flex;
@@ -142,15 +142,15 @@ body::after {
   isolation: isolate;
 }
 
-:root[data-theme='light'] .comet-border {
-  --_comet-peak: rgba(15, 15, 15, 0.65);
-  --_comet-hi: rgba(15, 15, 15, 0.35);
-  --_comet-mid: rgba(15, 15, 15, 0.15);
-  --_comet-lo: rgba(15, 15, 15, 0.05);
-  --_comet-base: rgba(15, 15, 15, 0.04);
-  --_glow-peak: rgba(15, 15, 15, 0.18);
-  --_glow-hi: rgba(15, 15, 15, 0.08);
-  --_inner-ring: rgba(15, 15, 15, 0.05);
+:root[data-theme='dark'] .comet-border {
+  --_comet-peak: rgba(255, 255, 255, 0.8);
+  --_comet-hi: rgba(255, 255, 255, 0.35);
+  --_comet-mid: rgba(255, 255, 255, 0.15);
+  --_comet-lo: rgba(255, 255, 255, 0.06);
+  --_comet-base: rgba(255, 255, 255, 0.04);
+  --_glow-peak: rgba(255, 255, 255, 0.25);
+  --_glow-hi: rgba(255, 255, 255, 0.1);
+  --_inner-ring: rgba(255, 255, 255, 0.06);
 }
 
 /* Glow halo around the comet */
