@@ -31,23 +31,23 @@ export const profile = {
   socials: [
     {
       label: 'GitHub',
-      href: 'https://github.com/your-username',
-      display: 'github.com/your-username'
+      href: 'https://github.com/AkshitMaheshwari',
+      display: 'Github'
     },
     {
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/your-profile',
-      display: 'linkedin.com/in/your-profile'
+      href: 'https://www.linkedin.com/in/akshit-maheshwari-46b428272/',
+      display: 'linkedin.com/in/akshit-maheshwari-46b428272/'
     },
     {
       label: 'Email',
-      href: 'mailto:your.email@example.com',
-      display: 'your.email@example.com'
+      href: 'mailto:akshitmaheshwari06@gmail.com',
+      display: 'akshitmaheshwari06@gmail.com'
     },
     {
       label: 'LeetCode',
-      href: 'https://leetcode.com/u/your-handle',
-      display: 'leetcode.com/u/your-handle'
+      href: 'https://leetcode.com/u/akshitmaheshwari06/',
+      display: 'leetcode.com/u/akshitmaheshwari06/'
     }
   ] satisfies SocialLink[],
   education: [
@@ -58,7 +58,7 @@ export const profile = {
       period: 'September 2023 - August 2027'
     },
     {
-      school: 'IIT Madras Online',
+      school: 'IIT Madras',
       place: 'Remote',
       degree: 'B.Sc. - Data Science and its Applications',
       period: 'September 2023 - July 2027'
@@ -77,7 +77,7 @@ export const profile = {
     },
     {
       category: 'ML / DL',
-      items: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Imbalanced-learn', 'Scikit-learn', 'TensorFlow', 'OpenCV']
+      items: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Imbalanced-learn', 'Scikit-learn', 'TensorFlow', 'OpenCV','PyTorch','Hugging Face', 'Transformers','GANs']
     },
     {
       category: 'Frameworks',
@@ -100,7 +100,7 @@ export const profile = {
     {
       title: 'ML Research Intern',
       organization: 'Under Prof. Ruchi Sherawat',
-      period: 'Research Project',
+      period: 'June 2025 - August 2025',
       description:
         'Built a dental RGB image classification system for age and gender prediction. The project covered preprocessing, masking, training, evaluation, and model comparison to identify the strongest pretrained approach.'
     },
@@ -114,7 +114,7 @@ export const profile = {
   ],
   projects: [
     {
-      name: 'VoiceBased Product Search',
+      name: 'CallBased Product Retrieval Agent',
       summary: 'Voice calling product discovery for e-commerce.',
       description:
         'An AI-powered calling agent that helps customers find products through natural phone conversations. Built with Twilio, ElevenLabs, Groq LLM, and ChromaDB with semantic search plus metadata filters.',
