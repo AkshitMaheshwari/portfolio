@@ -15,7 +15,11 @@ const bodyFont = Manrope({
 export const metadata: Metadata = {
   title: 'Akshit Maheshwari | AI / ML Portfolio',
   description:
-    'A bold Next.js portfolio for Akshit Maheshwari with project showcases, resume sections, and a backend contact route.'
+    'A bold Next.js portfolio for Akshit Maheshwari with project showcases, resume sections, and a backend contact route.',
+  icons: {
+    icon: '/favicon.jpg',
+    shortcut: '/favicon.jpg',
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

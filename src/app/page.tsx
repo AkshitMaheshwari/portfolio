@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { SectionHeading } from '@/components/section-heading';
 import { CursorGlow } from '@/components/cursor-glow';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -19,10 +21,37 @@ export default function HomePage() {
       <CursorGlow />
 
       <header className="relative z-10 mb-8 flex items-center justify-between rounded-full border border-[var(--border)] bg-[var(--panel)] px-4 py-3 shadow-[var(--shadow)] backdrop-blur-xl sm:px-6">
-        <div>
-          {/* <p className="text-xs uppercase tracking-[0.45em] text-[var(--accent)]/80">Portfolio</p> */}
-          <p className="mt-1 text-sm font-medium text-[var(--text)]">Akshit Maheshwari</p>
-        </div>
+        <p className="text-sm font-medium text-[var(--text)]">Akshit Maheshwari</p>
+
+        <nav className="hidden items-center gap-1 sm:flex">
+          <Link
+            href="/"
+            className="rounded-full px-4 py-1.5 text-sm font-medium text-[var(--muted)] transition duration-200 hover:bg-[var(--surface)] hover:text-[var(--text)]"
+          >
+            Home
+          </Link>
+          <Link
+            href="/projects"
+            className="rounded-full px-4 py-1.5 text-sm font-medium text-[var(--muted)] transition duration-200 hover:bg-[var(--surface)] hover:text-[var(--text)]"
+          >
+            Projects
+          </Link>
+          <a
+            href="#"
+            className="rounded-full px-4 py-1.5 text-sm font-medium text-[var(--muted)] transition duration-200 hover:bg-[var(--surface)] hover:text-[var(--text)]"
+          >
+            Blogs
+          </a>
+          <a
+            href="https://drive.google.com/file/d/1AtoKLP_-DwR1ngpiLQTj7UsbMPhD2WDT/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="ml-1 rounded-full border border-[var(--border)] bg-[var(--text)] px-4 py-1.5 text-sm font-semibold text-[var(--page)] transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+          >
+            Resume ↗
+          </a>
+        </nav>
+
         <ThemeToggle />
       </header>
 
@@ -31,7 +60,7 @@ export default function HomePage() {
           {/* <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[var(--accent)]/72">Hi</p> */}
           <TypingHeading />
           <p className="max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
-            <span className="font-semibold text-[var(--text)]">AI/ML developer</span> who likes practical systems, polished interfaces,
+            an <span className="font-semibold text-[var(--text)]">AI/ML developer</span> who likes practical systems, polished interfaces,
             and work that feels clean, useful, and intentional.
           </p>
           <p className="max-w-2xl text-sm font-medium uppercase tracking-[0.32em] text-[var(--accent)]/72">
@@ -54,12 +83,16 @@ export default function HomePage() {
         <div className="flex justify-start lg:justify-end">
           <div className="relative">
             <div className="absolute -inset-4 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.22),transparent_68%)] blur-2xl" />
-            <div className="relative flex h-56 w-56 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--panel)] p-3 shadow-[var(--shadow)] sm:h-64 sm:w-64 lg:h-72 lg:w-72">
-              <div className="flex h-full w-full items-center justify-center rounded-full border border-[var(--border)] bg-[var(--page)] text-center text-sm leading-6 text-[var(--muted)]">
-                <div className="space-y-2 px-8">
-                  <p className="text-2xl font-semibold text-[var(--text)]">DP</p>
-                  <p>Use a circular profile image here for a cleaner personal feel.</p>
-                </div>
+            <div className="relative flex h-64 w-64 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--panel)] p-3 shadow-[var(--shadow)] sm:h-72 sm:w-72 lg:h-80 lg:w-80">
+              <div className="relative h-full w-full overflow-hidden rounded-full border border-[var(--border)] bg-[var(--page)]">
+                <Image
+                  src="/pfp4.jpg"
+                  alt="Akshit Maheshwari"
+                  fill
+                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 288px, 320px"
+                  priority
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -94,7 +127,7 @@ export default function HomePage() {
       <section className="space-y-6 py-8">
         <SectionHeading
           eyebrow=""
-          title="About"
+          title="About me"
           description=""
         />
         {sectionCard(
@@ -223,7 +256,7 @@ export default function HomePage() {
           description="The project section stays in the same visual rhythm so it doesn't compete with the rest of the page."
         />
         <div className="grid gap-4 lg:grid-cols-2">
-          {profile.projects.map((project, index) => (
+          {profile.projects.slice(0, 2).map((project, index) => (
             <CometBorder key={project.name} delay={index * -1}>
               <article className="group text-left transition duration-300 hover:-translate-y-1">
                   <p className="text-sm uppercase tracking-[0.3em] text-[var(--accent)]/75">{project.summary}</p>
@@ -275,6 +308,16 @@ export default function HomePage() {
                 </article>
             </CometBorder>
           ))}
+        </div>
+        
+        <div className="flex justify-center pt-6">
+          <Link
+            href="/projects"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--panel)] px-6 py-3 text-sm font-semibold text-[var(--text)] shadow-[var(--shadow)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]/50 hover:bg-[var(--text)] hover:text-[var(--page)] hover:shadow-lg"
+          >
+            <span>View All Projects</span>
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </Link>
         </div>
       </section>
 
