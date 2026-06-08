@@ -97,89 +97,47 @@ body::after {
 
 }
 
-/* ── Comet border ──────────────────────────────────────────── */
-
-@property --comet-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: true;
-}
+/* ── Card Border (Static glowing border) ──────────────────────────── */
 
 .comet-border {
   --_radius: 2rem;
   --_bw: 1.5px;
-  --_comet-peak: rgba(15, 15, 15, 0.65);
-  --_comet-hi: rgba(15, 15, 15, 0.35);
-  --_comet-mid: rgba(15, 15, 15, 0.15);
-  --_comet-lo: rgba(15, 15, 15, 0.05);
-  --_comet-base: rgba(15, 15, 15, 0.04);
-  --_glow-peak: rgba(15, 15, 15, 0.18);
-  --_glow-hi: rgba(15, 15, 15, 0.08);
-  --_inner-ring: rgba(15, 15, 15, 0.05);
 
   position: relative;
   display: flex;
   flex-direction: column;
   border-radius: var(--_radius);
-  border: var(--_bw) solid transparent;
-  background:
-    linear-gradient(var(--page), var(--page)) padding-box,
-    conic-gradient(
-      from var(--comet-angle) at 50% 50%,
-      var(--_comet-base) 0%,
-      var(--_comet-base) 55%,
-      var(--_comet-lo) 64%,
-      var(--_comet-mid) 72%,
-      var(--_comet-hi) 77%,
-      var(--_comet-peak) 80%,
-      var(--_comet-hi) 83%,
-      var(--_comet-mid) 87%,
-      var(--_comet-lo) 92%,
-      var(--_comet-base) 100%
-    ) border-box;
-  animation: comet-spin 4s linear infinite;
-  animation-delay: var(--comet-delay, 0s);
+  border: var(--_bw) solid rgba(15, 15, 15, 0.65);
+  box-shadow: 
+    var(--shadow),
+    0 0 15px rgba(15, 15, 15, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
   isolation: isolate;
 }
 
 :root[data-theme='dark'] .comet-border {
-  --_comet-peak: rgba(255, 255, 255, 0.8);
-  --_comet-hi: rgba(255, 255, 255, 0.35);
-  --_comet-mid: rgba(255, 255, 255, 0.15);
-  --_comet-lo: rgba(255, 255, 255, 0.06);
-  --_comet-base: rgba(255, 255, 255, 0.04);
-  --_glow-peak: rgba(255, 255, 255, 0.25);
-  --_glow-hi: rgba(255, 255, 255, 0.1);
-  --_inner-ring: rgba(255, 255, 255, 0.06);
+  border: var(--_bw) solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    var(--shadow),
+    0 0 25px rgba(255, 255, 255, 0.15);
 }
 
-/* Glow halo around the comet */
-.comet-border::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: calc(var(--_radius) + 8px);
-  background: conic-gradient(
-    from var(--comet-angle) at 50% 50%,
-    transparent 0%,
-    transparent 60%,
-    var(--_glow-hi) 74%,
-    var(--_glow-peak) 80%,
-    var(--_glow-hi) 86%,
-    transparent 100%
-  );
-  filter: blur(16px);
-  opacity: 0.55;
-  z-index: -1;
-  pointer-events: none;
-  transition:
-    opacity 0.4s ease,
-    filter 0.4s ease;
+.comet-border:hover {
+  transform: translateY(-6px) scale(1.005);
+  border-color: rgba(15, 15, 15, 0.85);
+  box-shadow:
+    0 22px 40px -10px rgba(15, 15, 15, 0.15),
+    0 0 25px rgba(15, 15, 15, 0.12);
 }
 
-.comet-border:hover::after {
-  opacity: 1;
-  filter: blur(22px);
+:root[data-theme='dark'] .comet-border:hover {
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 22px 40px -10px rgba(255, 255, 255, 0.25),
+    0 0 30px rgba(255, 255, 255, 0.22);
 }
 
 /* Card interior */
@@ -193,16 +151,9 @@ body::after {
   background: var(--panel);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  box-shadow:
-    var(--shadow),
-    inset 0 0 0 0.5px var(--_inner-ring);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
 }
 
-@keyframes comet-spin {
-  from {
-    --comet-angle: 0deg;
-  }
-  to {
-    --comet-angle: 360deg;
-  }
+:root[data-theme='light'] .comet-border-inner {
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.04);
 }
