@@ -73,7 +73,7 @@ export const profile = {
   skills: [
     {
       category: 'Languages',
-      items: ['C', 'C++', 'Python']
+      items: ['C', 'C++', 'Python','JavaScript', 'SQL']
     },
     {
       category: 'ML / DL',
@@ -81,7 +81,7 @@ export const profile = {
     },
     {
       category: 'Frameworks',
-      items: ['Flask', 'FastAPI', 'LangChain', 'LangGraph']
+      items: ['Flask', 'FastAPI', 'LangChain', 'LangGraph','React']
     },
     {
       category: 'Databases',
@@ -89,7 +89,7 @@ export const profile = {
     },
     {
       category: 'Tools',
-      items: ['MLflow', 'Docker', 'ElevenLabs']
+      items: ['MLflow', 'Docker', 'Dagshub', 'Git', 'Jupyter Notebooks']
     },
     {
       category: 'Cloud',
@@ -168,6 +168,20 @@ export const profile = {
       tags: ['Computer Vision', 'DenseNet201', 'LSTM', 'NLP'],
       githubUrl: 'https://github.com/your-username/ImgCaption-Model',
       liveUrl: 'https://your-live-demo-url.com'
+    },
+    {
+      name: 'Sentiment Analyzer',
+      summary: 'Text sentiment classification with Transformers, LSTMs and GRU',
+      description:
+        'A custom Transformer-based model with an attention layer was implemented to capture contextual relationships within text sequences. The performance of the Transformer model was then compared with LSTM and GRU models by evaluating metrics.',
+      highlights: [
+        'Custom Transformer-based architecture with attention mechanism',
+        'Comparison of Transformer, LSTM, and GRU models',
+        'Evaluation of model performance using standard metrics'
+      ],
+      tags: ['NLP', 'Transformers', 'LSTM', 'GRU'],
+      githubUrl: 'https://github.com/AkshitMaheshwari/Sentiment-Analyzer',
+      liveUrl: 'https://sentiment-analyzer-rndz.onrender.com/'
     }
   ] satisfies Project[]
 };
