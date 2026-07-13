@@ -161,7 +161,7 @@ export const profile = {
       ],
       tags: ['Twilio', 'ElevenLabs', 'Groq', 'ChromaDB', 'Retrieval'],
       githubUrl: 'https://github.com/your-username/VoiceProductAgent',
-      liveUrl: 'https://your-live-demo-url.com',
+      liveUrl: 'https://github.com/your-username/VoiceProductAgent',
       image: '/projects/voice-agent.png',
       imageAlt: 'Screenshot of the CallBased Product Retrieval Agent website'
     },
@@ -177,7 +177,7 @@ export const profile = {
       ],
       tags: ['MLOps', 'Phishing Detection', 'Pipeline Design'],
       githubUrl: 'https://github.com/your-username/Network-Security',
-      liveUrl: 'https://your-live-demo-url.com',
+      liveUrl: 'https://github.com/your-username/Network-Security',
       image: '/projects/network-security.png',
       imageAlt: 'Screenshot of the Network Security Model website'
     },
@@ -193,7 +193,7 @@ export const profile = {
       ],
       tags: ['Time Series', 'Forecasting', 'Gradient Boosting', 'Feature Engineering'],
       githubUrl: 'https://github.com/your-username/audience-forecasting',
-      liveUrl: 'https://your-live-demo-url.com',
+      liveUrl: 'https://github.com/your-username/audience-forecasting',
       image: '/projects/audience-forecasting.png',
       imageAlt: 'Screenshot of the Theatre Audience Forecasting website'
     },
@@ -209,7 +209,7 @@ export const profile = {
       ],
       tags: ['Computer Vision', 'DenseNet201', 'LSTM', 'NLP'],
       githubUrl: 'https://github.com/your-username/ImgCaption-Model',
-      liveUrl: 'https://your-live-demo-url.com',
+      liveUrl: 'https://github.com/your-username/ImgCaption-Model',
       image: '/projects/image-caption-generator.png',
       imageAlt: 'Screenshot of the Image Caption Generator website'
     },
