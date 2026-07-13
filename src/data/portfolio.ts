@@ -117,6 +117,23 @@ export const profile = {
   ],
   projects: [
     {
+      name: 'TaxAI India',
+      summary: 'AI-powered tax and compliance copilot for India.',
+      description:
+        'A hybrid tax assistant for Indian freelancers, students, creators, and small businesses that combines AI reasoning with deterministic tax logic, document extraction, and compliance insights.',
+      highlights: [
+        'AI copilot for tax planning and compliance guidance',
+        'OCR-based financial document extraction and structured analysis',
+        'Old vs new regime comparison with optimization insights'
+      ],
+      tags: ['FastAPI', 'React', 'MongoDB', 'LangChain', 'OCR'],
+      githubUrl: 'https://github.com/kaws26/TaxAI',
+      liveUrl: 'https://tax-ai-omega.vercel.app/',
+      featured: true,
+      image: '/projects/taxai.png',
+      imageAlt: 'Screenshot of the TaxAI India website'
+    },
+    {
       name: 'Vision-Store',
       summary: 'Real-time AI store intelligence for retail behavior analysis.',
       description:
@@ -209,7 +226,6 @@ export const profile = {
       tags: ['NLP', 'Transformers', 'LSTM', 'GRU'],
       githubUrl: 'https://github.com/AkshitMaheshwari/Sentiment-Analyzer',
       liveUrl: 'https://sentiment-analyzer-rndz.onrender.com/',
-      featured: true,
       image: '/projects/sentiment-analyzer.png',
       imageAlt: 'Screenshot of the Sentiment Analyzer website'
     }
