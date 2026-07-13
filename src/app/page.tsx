@@ -52,7 +52,7 @@ export default function HomePage() {
             Projects
           </Link>
           <a
-            href="#"
+            href="/blogs"
             className="rounded-full px-4 py-1.5 text-sm font-medium text-[var(--muted)] transition duration-200 hover:bg-[var(--surface)] hover:text-[var(--text)]"
           >
             Blogs

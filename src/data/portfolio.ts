@@ -117,6 +117,22 @@ export const profile = {
   ],
   projects: [
     {
+      name: 'Vision-Store',
+      summary: 'Real-time AI store intelligence for retail behavior analysis.',
+      description:
+        'A containerized real-time Store Intelligence API built with YOLOv8 nano, OpenCV, and FastAPI to track customer entry and exit, separate staff from shoppers, monitor queues, map movement across zones, and surface purchase conversion insights instantly.',
+      highlights: [
+        'Real-time customer entry and exit tracking',
+        'Queue monitoring, dwell time analysis, and zone-wise movement insights',
+        'Containerized FastAPI analytics pipeline with YOLOv8 nano and Docker'
+      ],
+      tags: ['Computer Vision', 'YOLOv8', 'OpenCV', 'FastAPI', 'Docker'],
+      githubUrl: 'https://github.com/AkshitMaheshwari/Vision-Store',
+      liveUrl: 'https://github.com/AkshitMaheshwari/Vision-Store',
+      image: '/projects/vision-store.png',
+      imageAlt: 'Screenshot of the Vision-Store website'
+    },
+    {
       name: 'CallBased Product Retrieval Agent',
       summary: 'Voice calling product discovery for e-commerce.',
       description:
