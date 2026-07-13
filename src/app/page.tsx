@@ -16,6 +16,19 @@ function sectionCard(content: React.ReactNode, className = '', delay = 0, key?: 
   );
 }
 
+const primarySkillSet = new Set([
+  'Python',
+  'PyTorch',
+  'TensorFlow',
+  'FastAPI',
+  'LangChain',
+  'React',
+  'SQL',
+  'Docker',
+  'Scikit-learn',
+  'Hugging Face'
+]);
+
 export default function HomePage() {
   return (
     <main className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-6 sm:px-6 lg:px-8">
@@ -118,17 +131,29 @@ export default function HomePage() {
           <div className="space-y-4">
             {profile.education.map((item, index) =>
               sectionCard(
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between text-left gap-2">
-                  <div>
-                    <h3 className="text-xl font-semibold text-[var(--text)]">{item.school}</h3>
-                    <p className="mt-2 text-sm text-[var(--muted)]">{item.place} • <span className="italic">{item.degree}</span></p>
-                  </div>
-                  <div className="text-sm text-[var(--muted)] font-medium shrink-0 sm:text-right">
-                    {item.period}
+                <div className="flex h-full flex-col gap-5 text-left">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                        <p className="text-[0.62rem] font-semibold uppercase tracking-[0.32em] text-[var(--accent)]/65">
+                          Academic track
+                        </p>
+                      </div>
+                      <h3 className="text-xl font-semibold text-[var(--text)] sm:text-[1.35rem]">
+                        {item.school}
+                      </h3>
+                      <p className="text-sm text-[var(--muted-strong)] sm:text-base">
+                        {item.place} • <span className="italic">{item.degree}</span>
+                      </p>
+                    </div>
+                    <div className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs font-medium tracking-wide text-[var(--muted-strong)] sm:shrink-0 sm:self-start">
+                      {item.period}
+                    </div>
                   </div>
                 </div>,
-                '',
-                index * -0.5,
+                'bg-[var(--panel)]/94',
+                index * -0.35,
                 item.school
               )
             )}
@@ -142,29 +167,32 @@ export default function HomePage() {
             eyebrow=""
             title="Tools and technologies I use."
           />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3">
             {profile.skills.map((group, index) =>
               sectionCard(
-                <div className="space-y-4 text-left transition duration-300 group-hover:translate-y-[-2px]">
-                  <div className="flex items-center gap-3">
+                <div className="flex h-full flex-col space-y-5 text-left transition duration-300 group-hover:-translate-y-0.5">
+                  <div className="flex items-center gap-3 pb-1">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
                     <h3 className="text-lg font-semibold text-[var(--text)]">{group.category}</h3>
-                    <span className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1 text-[0.62rem] uppercase tracking-[0.3em] text-[var(--accent)]/72">
-                      Core
-                    </span>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+
+                  <div className="flex flex-wrap content-start justify-start gap-2.5">
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-sm text-[var(--text)] transition duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/45 hover:bg-[var(--text)] hover:text-[var(--page)]"
+                        className={`rounded-full border px-3 py-1.5 text-sm transition duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/45 hover:bg-[var(--text)] hover:text-[var(--page)] ${
+                          primarySkillSet.has(item)
+                            ? 'border-[rgba(14,14,16,0.16)] bg-[rgba(14,14,16,0.08)] text-[var(--text)] dark:border-[rgba(255,255,255,0.16)] dark:bg-[rgba(255,255,255,0.08)]'
+                            : 'border-[var(--border)] bg-[var(--surface)] text-[var(--muted-strong)]'
+                        }`}
                       >
                         {item}
                       </span>
                     ))}
                   </div>
                 </div>,
-                '',
-                index * -0.3,
+                index % 2 === 0 ? 'bg-[var(--panel)]/94' : 'bg-[var(--surface)]/94',
+                index * -0.24,
                 group.category
               )
             )}
@@ -182,20 +210,28 @@ export default function HomePage() {
           <div className="space-y-4">
             {profile.experience.map((item, index) =>
               sectionCard(
-                <div className="flex flex-col text-left gap-4">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                    <div>
-                      <h3 className="text-xl font-semibold text-[var(--text)]">{item.title}</h3>
-                      <p className="mt-1 text-sm text-[var(--muted)]">{item.organization}</p>
+                <div className="flex h-full flex-col gap-5 text-left">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                        <p className="text-[0.62rem] font-semibold uppercase tracking-[0.32em] text-[var(--accent)]/65">
+                          Experience track
+                        </p>
+                      </div>
+                      <h3 className="text-xl font-semibold text-[var(--text)] sm:text-[1.35rem]">{item.title}</h3>
+                      <p className="text-sm text-[var(--muted-strong)]">{item.organization}</p>
                     </div>
-                    <div className="text-sm text-[var(--muted)] font-medium shrink-0 sm:text-right">
+                    <div className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs font-medium tracking-wide text-[var(--muted-strong)] sm:shrink-0 sm:self-start">
                       {item.period}
                     </div>
                   </div>
-                  <p className="text-base leading-7 text-[var(--muted)]">{item.description}</p>
+                  <p className="max-w-3xl text-base leading-7 text-[var(--muted-strong)] sm:text-[1.02rem] sm:leading-8">
+                    {item.description}
+                  </p>
                 </div>,
-                '',
-                index * -0.5,
+                'bg-[var(--panel)]/94',
+                index * -0.35,
                 item.title
               )
             )}
