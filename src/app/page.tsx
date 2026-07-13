@@ -17,19 +17,6 @@ function sectionCard(content: React.ReactNode, className = '', delay = 0, key?: 
   );
 }
 
-const primarySkillSet = new Set([
-  'Python',
-  'PyTorch',
-  'TensorFlow',
-  'FastAPI',
-  'LangChain',
-  'React',
-  'SQL',
-  'Docker',
-  'Scikit-learn',
-  'Hugging Face'
-]);
-
 export default function HomePage() {
   return (
     <main className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-6 sm:px-6 lg:px-8">
@@ -181,11 +168,7 @@ export default function HomePage() {
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className={`rounded-full border px-3 py-1.5 text-sm transition duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/45 hover:bg-[var(--text)] hover:text-[var(--page)] ${
-                          primarySkillSet.has(item)
-                            ? 'border-[rgba(14,14,16,0.16)] bg-[rgba(14,14,16,0.08)] text-[var(--text)] dark:border-[rgba(255,255,255,0.16)] dark:bg-[rgba(255,255,255,0.08)]'
-                            : 'border-[var(--border)] bg-[var(--surface)] text-[var(--muted-strong)]'
-                        }`}
+                        className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-sm text-[var(--muted-strong)] transition duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/45 hover:bg-[var(--text)] hover:text-[var(--page)]"
                       >
                         {item}
                       </span>
