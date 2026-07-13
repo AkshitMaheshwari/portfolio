@@ -12,6 +12,9 @@ export type Project = {
   tags: string[];
   githubUrl: string;
   liveUrl: string;
+  featured?: boolean;
+  image?: string;
+  imageAlt?: string;
 };
 
 export const profile = {
@@ -125,7 +128,9 @@ export const profile = {
       ],
       tags: ['Twilio', 'ElevenLabs', 'Groq', 'ChromaDB', 'Retrieval'],
       githubUrl: 'https://github.com/your-username/VoiceProductAgent',
-      liveUrl: 'https://your-live-demo-url.com'
+      liveUrl: 'https://your-live-demo-url.com',
+      image: '/projects/voice-agent.png',
+      imageAlt: 'Screenshot of the CallBased Product Retrieval Agent website'
     },
     {
       name: 'Network Security Model',
@@ -139,7 +144,9 @@ export const profile = {
       ],
       tags: ['MLOps', 'Phishing Detection', 'Pipeline Design'],
       githubUrl: 'https://github.com/your-username/Network-Security',
-      liveUrl: 'https://your-live-demo-url.com'
+      liveUrl: 'https://your-live-demo-url.com',
+      image: '/projects/network-security.png',
+      imageAlt: 'Screenshot of the Network Security Model website'
     },
     {
       name: 'Theatre Audience Forecasting',
@@ -153,7 +160,9 @@ export const profile = {
       ],
       tags: ['Time Series', 'Forecasting', 'Gradient Boosting', 'Feature Engineering'],
       githubUrl: 'https://github.com/your-username/audience-forecasting',
-      liveUrl: 'https://your-live-demo-url.com'
+      liveUrl: 'https://your-live-demo-url.com',
+      image: '/projects/audience-forecasting.png',
+      imageAlt: 'Screenshot of the Theatre Audience Forecasting website'
     },
     {
       name: 'Image Caption Generator',
@@ -167,7 +176,9 @@ export const profile = {
       ],
       tags: ['Computer Vision', 'DenseNet201', 'LSTM', 'NLP'],
       githubUrl: 'https://github.com/your-username/ImgCaption-Model',
-      liveUrl: 'https://your-live-demo-url.com'
+      liveUrl: 'https://your-live-demo-url.com',
+      image: '/projects/image-caption-generator.png',
+      imageAlt: 'Screenshot of the Image Caption Generator website'
     },
     {
       name: 'Sentiment Analyzer',
@@ -181,7 +192,10 @@ export const profile = {
       ],
       tags: ['NLP', 'Transformers', 'LSTM', 'GRU'],
       githubUrl: 'https://github.com/AkshitMaheshwari/Sentiment-Analyzer',
-      liveUrl: 'https://sentiment-analyzer-rndz.onrender.com/'
+      liveUrl: 'https://sentiment-analyzer-rndz.onrender.com/',
+      featured: true,
+      image: '/projects/sentiment-analyzer.png',
+      imageAlt: 'Screenshot of the Sentiment Analyzer website'
     }
   ] satisfies Project[]
 };
