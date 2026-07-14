@@ -160,8 +160,8 @@ export const profile = {
         'User preference memory for better follow-up turns'
       ],
       tags: ['Twilio', 'ElevenLabs', 'Groq', 'ChromaDB', 'Retrieval'],
-      githubUrl: 'https://github.com/your-username/VoiceProductAgent',
-      liveUrl: 'https://github.com/your-username/VoiceProductAgent',
+      githubUrl: 'https://github.com/AkshitMaheshwari/VoiceBased_Ecomm',
+      liveUrl: 'https://github.com/AkshitMaheshwari/VoiceBased_Ecomm',
       image: '/projects/voice-agent.png',
       imageAlt: 'Screenshot of the CallBased Product Retrieval Agent website'
     },
@@ -176,10 +176,10 @@ export const profile = {
         'Repeatable workflow with cleaner maintenance boundaries'
       ],
       tags: ['MLOps', 'Phishing Detection', 'Pipeline Design'],
-      githubUrl: 'https://github.com/your-username/Network-Security',
-      liveUrl: 'https://github.com/your-username/Network-Security',
-      image: '/projects/network-security.png',
-      imageAlt: 'Screenshot of the Network Security Model website'
+      githubUrl: 'https://github.com/AkshitMaheshwari/NetworkSecurity',
+      liveUrl: 'https://github.com/AkshitMaheshwari/NetworkSecurity',
+      // image: '/projects/network-security.png',
+      // imageAlt: 'Screenshot of the Network Security Model website'
     },
     {
       name: 'Theatre Audience Forecasting',
@@ -192,10 +192,10 @@ export const profile = {
         'Achieved 13.4 MAE'
       ],
       tags: ['Time Series', 'Forecasting', 'Gradient Boosting', 'Feature Engineering'],
-      githubUrl: 'https://github.com/your-username/audience-forecasting',
-      liveUrl: 'https://github.com/your-username/audience-forecasting',
-      image: '/projects/audience-forecasting.png',
-      imageAlt: 'Screenshot of the Theatre Audience Forecasting website'
+      githubUrl: 'https://github.com/AkshitMaheshwari/Theatre_audience_forecasting',
+      liveUrl: 'https://github.com/AkshitMaheshwari/Theatre_audience_forecasting',
+      // image: '/projects/audience-forecasting.png',
+      // imageAlt: 'Screenshot of the Theatre Audience Forecasting website'
     },
     {
       name: 'Image Caption Generator',
@@ -208,8 +208,8 @@ export const profile = {
         'Fast inference workflow for image-to-text output'
       ],
       tags: ['Computer Vision', 'DenseNet201', 'LSTM', 'NLP'],
-      githubUrl: 'https://github.com/your-username/ImgCaption-Model',
-      liveUrl: 'https://github.com/your-username/ImgCaption-Model',
+      githubUrl: 'https://github.com/AkshitMaheshwari/Img-Caption-Generator-Model',
+      liveUrl: 'https://github.com/AkshitMaheshwari/Img-Caption-Generator-Model',
       image: '/projects/image-caption-generator.png',
       imageAlt: 'Screenshot of the Image Caption Generator website'
     },

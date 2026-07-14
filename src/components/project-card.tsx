@@ -27,7 +27,7 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
                   Project preview
                 </p>
                 <p className="mt-2 max-w-xs text-sm leading-6 text-[var(--page)]/85">
-                  Add a screenshot in public/projects and wire it through the project data.
+                  {/* Add a screenshot in public/projects and wire it through the project data. */}
                 </p>
               </div>
             </div>
